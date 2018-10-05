@@ -18,20 +18,28 @@
 
 .grid-board {
   padding: 100px 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .game-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 0px;
+  display: flex;
+  flex-wrap: wrap;
   padding: 50px 0;
 }
 
-.grid-column:last-child > .grid-tile {
+.game-grid ~ div.grid-tile {
+  flex-basis: 33%;
+  margin: 0;
+}
+
+.grid-tile {
+
+}
+
+.grid-tile:nth-child(3), .grid-tile:nth-child(6), .grid-tile:nth-child(9) {
   border-right: none;
+}
+.grid-tile:nth-child(7), .grid-tile:nth-child(8), .grid-tile:nth-child(9) {
+  border-bottom: none;
 }
 
 .grid-column > .grid-tile:last-child {
@@ -40,10 +48,9 @@
 
 .grid-tile {
   height: 90px;
-  width: 90px;
+  width: 89px;
   border-bottom: 2px solid #C2BABA;
   border-right: 2px solid #C2BABA;
-  grid-column: 1fr;
 }
 
 .new-game {

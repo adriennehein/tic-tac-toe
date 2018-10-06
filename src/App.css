@@ -2,6 +2,8 @@
   text-align: center;
   background-color: #6C5A62;
   min-height: 100vh;
+  height: 100%;
+  width: 100%;
 }
 
 .header-bar {
@@ -9,12 +11,10 @@
   color: #EDB666;
   font-size: 1.5em;
   padding: 1em 0;
+  text-transform: capitalize;
 }
 
-.current-player {
-  color: #EDB666;
-  font-size: 1.5em;
-}
+
 
 .grid-board {
   padding: 100px 50px;
@@ -31,10 +31,6 @@
   margin: 0;
 }
 
-.grid-tile {
-
-}
-
 .grid-tile:nth-child(3), .grid-tile:nth-child(6), .grid-tile:nth-child(9) {
   border-right: none;
 }
@@ -47,10 +43,19 @@
 }
 
 .grid-tile {
-  height: 90px;
+  height: 89px;
   width: 89px;
   border-bottom: 2px solid #C2BABA;
   border-right: 2px solid #C2BABA;
+}
+
+.game-status, .new-game {
+  color: #EDB666;
+  font-size: 1.5em;
+  background: #3B1F2B;
+  padding: 30px;
+  height: 200px;
+  width: 200px;
 }
 
 .new-game {
@@ -58,18 +63,64 @@
   font-size: 1.5em;
 }
 
-.x-piece {
+.select-piece {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+.piece-buttons {
+  display: flex;
+}
+
+.piece-buttons > button {
+  background-color: #3B1F2B;
+  border: none;
+  border-radius: 10px;
+  font-size: 5em;
+  padding: 0 40px 20px 40px;
+  margin: 20px;
+}
+
+.piece-buttons > button:focus {
+  outline: none;
+  background: white;
+}
+
+button > span.button-text{
+  /* height: 200px;
+  margin-top: -40%; */
+
+}
+
+button[value="x"] {
+  color: #EDB666;
+}
+
+button[value="o"] {
+  color: #76B7D2;
+}
+
+.select {
+  font-size: 2em;
+  color: white;
+}
+
+.piece-x {
   color: #EDB666;
   font-size: 3.5em;
   justify-content: center;
   line-height: 1.6;
+  text-transform: uppercase;
 }
 
-.o-piece {
+.piece-o {
   color: #76B7D2;
   font-size: 3.5em;
   justify-content: center;
   line-height: 1.6;
+  text-transform: uppercase;
+
 }
 
 .footer-bar {
@@ -80,5 +131,56 @@
   font-size: 1em;
   padding: 1em 0;
   width: 100%;
+
+}
+
+@media screen and (max-width: 800px) {
+  .game-status, .new-game {
+    margin: 0 auto;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: lowercase;
+    padding: 15px;
+    height: auto;
+    width: 200px;
+  }
+
+  .piece-buttons button {
+    font-size: 5em;
+    padding: 0 35px 20px 35px;
+    margin: 20px;
+  }
+
+  .grid-board {
+    padding: 10px;
+    padding-bottom: 80px;
+    margin: 0 auto;
+  }
+  .game-grid {
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .grid-board {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  .game-grid {
+    width: 650px;
+    justify-content: center;
+  }
+
+  .grid-tile {
+    height: 200px;
+    width: 200px;
+  }
+
+  .piece-x, .piece-o {
+    font-size: 9em;
+  }
+
 
 }

@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 
 class Game extends Component {
   handleClick(e) {
-    e.preventDefault();
-    this.props.updatePlayer();
     this.props.placePlayer(e);
-    this.props.checkWon();
+    this.props.checkStatus();
   }
 
-  handleChange() {
-    console.log('test');
+  newGame() {
+    this.props.newGame();
   }
 
   render() {
@@ -18,8 +16,8 @@ class Game extends Component {
     return (
       <div className="grid-board">
 
-        <div className="current-player">
-          its player {this.props.currentPlayer}s turn
+        <div className="game-status">
+          {this.props.gameStatus}
         </div>
 
 
@@ -30,7 +28,7 @@ class Game extends Component {
             this.props.gameGrid.map(function(item, i){
               return (
               <div className="grid-tile" key={i} id={i} onClick={handleClick}>
-                <div className={item + "-piece"} id={i}>{item}</div>
+                <div className={"piece-" + item} id={i}>{item}</div>
               </div>
               )
             })
@@ -38,7 +36,7 @@ class Game extends Component {
 
         </div>
 
-        <div className="new-game">
+        <div className="new-game" onClick={this.newGame.bind(this)}>
           new game
         </div>
       </div>

@@ -14,7 +14,7 @@ class Player extends Component {
         <div className="select">select piece</div>
         <div className="piece-buttons">
           <button value="x" onClick={this.handleChange.bind(this)}>x</button>
-          <button value="o" onClick={this.handleChange.bind(this)}><span className='button-text'>o</span></button>
+          <button value="o" onClick={this.handleChange.bind(this)}>o</button>
         </div>
       </div>
     );

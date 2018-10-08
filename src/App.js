@@ -14,7 +14,7 @@ class App extends Component {
       gameStatus: 'choose a piece to begin',
       counter: 0,
       gameWon: false,
-      gameGrid: Array(9).fill(''),
+      gameGrid: Array(9).fill(null),
     }
   }
 
@@ -37,7 +37,7 @@ class App extends Component {
     var gameGrid = this.state.gameGrid;
     (current == this.state.playerOne) ? (current = this.state.playerTwo) : (current = this.state.playerOne);
 
-    if (gameGrid[i] == '' && !this.state.gameWon && this.state.playerOne) {
+    if (!gameGrid[i] && !this.state.gameWon && this.state.playerOne) {
       gameGrid[i] = this.state.currentPlayer;
       this.setState({
         gameGrid: gameGrid,
@@ -56,7 +56,7 @@ class App extends Component {
       gameStatus: 'choose a piece to begin',
       counter: 0,
       gameWon: false,
-      gameGrid: Array(9).fill('')
+      gameGrid: Array(9).fill(null)
     });
   }
 
@@ -76,18 +76,16 @@ class App extends Component {
 
     for(let i=0; i < winState.length; i++) {
       const [a, b, c] = winState[i];
-      if (newGrid[a] && newGrid[a] === newGrid[b] && newGrid[a] === newGrid[c]) {
+      if (newGrid[a] && newGrid[a] === newGrid[b] && newGrid[a] === newGrid[c] && !gameWon) {
         this.setState({
           gameWon: true,
           gameStatus: this.state.currentPlayer + ' wins'
         })
-        gameWon=true;
       }
     }
-    if (this.state.counter == 8 && gameWon != true) {
+    if (this.state.counter == 8 && !gameWon) {
       this.setState({
         gameStatus: 'stalemate',
-        currentPlayer: ''
       });
     }
   }
@@ -101,7 +99,6 @@ class App extends Component {
 
         <Player
           selectPlayer={this.selectPlayer.bind(this)} />
-
 
         <Game
           currentPlayer={this.state.currentPlayer}
